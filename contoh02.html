@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Konversi Suhu</title>
+  <script>
+    function konversiSuhu() {
+      // Mendapatkan nilai input dari pengguna
+      var suhuInput = parseFloat(document.getElementById("inputSuhu").value);
+      
+      // Mendapatkan pilihan satuan suhu
+      var dariSatuan = document.getElementById("dariSatuan").value;
+      var keSatuan = document.getElementById("keSatuan").value;
+      
+      var hasil;
+      
+      // Menghitung konversi suhu
+      if (dariSatuan === "celsius") {
+        if (keSatuan === "fahrenheit") {
+          hasil = (suhuInput * 9/5) + 32;
+        } else if (keSatuan === "kelvin") {
+          hasil = suhuInput + 273.15;
+        } else {
+          hasil = suhuInput; // Satuan yang sama, tidak ada konversi yang diperlukan
+        }
+      } else if (dariSatuan === "fahrenheit") {
+        if (keSatuan === "celsius") {
+          hasil = (suhuInput - 32) * 5/9;
+        } else if (keSatuan === "kelvin") {
+          hasil = (suhuInput - 32) * 5/9 + 273.15;
+        } else {
+          hasil = suhuInput; // Satuan yang sama, tidak ada konversi yang diperlukan
+        }
+      } else if (dariSatuan === "kelvin") {
+        if (keSatuan === "celsius") {
+          hasil = suhuInput - 273.15;
+        } else if (keSatuan === "fahrenheit") {
+          hasil = (suhuInput - 273.15) * 9/5 + 32;
+        } else {
+          hasil = suhuInput; // Satuan yang sama, tidak ada konversi yang diperlukan
+        }
+      }
+      
+      // Menampilkan hasil konversi suhu
+      document.getElementById("hasilKonversi").innerHTML = hasil;
+    }
+  </script>
+</head>
+<body>
+  <h1>Konversi Suhu</h1>
+  
+  <label for="inputSuhu">Masukkan suhu:</label>
+  <input type="number" id="inputSuhu">
+  
+  <label for="dariSatuan">Dari:</label>
+  <select id="dariSatuan">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+    <option value="kelvin">Kelvin</option>
+  </select>
+  
+  <label for="keSatuan">Ke:</label>
+  <select id="keSatuan">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+    <option value="kelvin">Kelvin</option>
+  </select>
+  
+  <button onclick="konversiSuhu()">Konversi</button>
+  
+  <p>Hasil konversi: <span id="hasilKonversi"></span></p>
+</body>
+</html>
